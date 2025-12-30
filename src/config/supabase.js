@@ -9,3 +9,13 @@ export const supabase = createClient(supabaseUrl, anonKey);
 
 // Untuk admin / backend
 export const supabaseAdmin = createClient(supabaseUrl, serviceKey);
+
+export const getUserSupabase = (accessToken) => {
+    return createClient(supabaseUrl, anonKey, {
+        global: {
+            headers: {
+                Authorization: `Bearer ${accessToken}`,
+            },
+        },
+    });
+};
